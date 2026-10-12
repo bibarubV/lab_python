@@ -7,7 +7,7 @@ def format_name(name: str) -> str:
     elif isinstance(name, tuple) or isinstance(name, list):
         return f"{name[0]} {name[1][0]}. {name[2][0]}."
     else:
-        raise Exception("неправильно введено фио")
+        raise TypeError("неподдерживаемый тип фио")
 
 def main():
     # фио одной строкой
