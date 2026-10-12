@@ -4,6 +4,7 @@ def my_reverse(x):
     return x[::-1]
 
 def is_palindrome(s) -> bool:
+    s = s.lower()
     return s == my_reverse(s)
 
 def main():
