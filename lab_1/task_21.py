@@ -3,6 +3,12 @@
 import functools
 import time
 
+def factorial(n):
+    result = 1
+    for i in range(2, n+1):
+        result *= i
+    return result
+
 def timing(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
@@ -19,11 +25,6 @@ def test():
 
 @timing
 def test2():
-    def factorial(n):
-        result = 1
-        for i in range(2, n+1):
-            result *= i
-        return result
     factorial(90000)
 
 def main():
