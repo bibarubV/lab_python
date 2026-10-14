@@ -4,7 +4,7 @@ import re
 from collections import defaultdict
 
 def analyze_text(text, skip=None):
-    cmp = lambda x: len(x) >= skip if skip else lambda x: True
+    cmp = lambda x: len(x) >= skip if skip else None
     words = list(filter(cmp, re.findall(r"\w+", text, flags=re.UNICODE)))
     word_count = defaultdict(int)
     shortest = words[0].lower()
