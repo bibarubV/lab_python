@@ -12,8 +12,11 @@ def main():
     print("a-b = "+str(a-b))
     print("a*b = "+str(a*b))
     if b != 0:
-        print("a // b = "+str(a//b))
-        print("a % b = "+str(a%b))
+        if isinstance(a, int) and isinstance(b, int):
+            print("a // b = "+str(a//b))
+            print("a % b = "+str(a%b))
+        else:
+            print("a / b = "+str(a/b))
     print("a^b = "+str(a**b))
 
 if __name__ == "__main__":
