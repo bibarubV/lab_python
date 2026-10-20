@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 def num(x):
+    x = x.replace(",", ".")
     return float(x) if "." in x else int(x)
 
 def main():
