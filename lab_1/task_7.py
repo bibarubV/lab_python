@@ -33,11 +33,12 @@ class Plan:
         data_price = cls.internet.calculate_price(data)
         if data_price:
             print("Сумма за доп. трафик: "+format_div_hundred(data_price))
-        print("Налог: "+str(tax)+"%")
         total = cls.base_price+messages_price+minutes_price+data_price
-        total *= 1+tax/100
-        total = round(total)
-        print(f"Итого: "+format_div_hundred(total))
+        print("Итого: "+format_div_hundred(total))
+        tax_added = round(total*tax/100)
+        print("Налог "+str(tax)+"%: "+format_div_hundred(tax_added))
+        total_taxed = total+tax_added
+        print("Итого с учетом налога: "+format_div_hundred(total_taxed))
         return total
 
 def main():
