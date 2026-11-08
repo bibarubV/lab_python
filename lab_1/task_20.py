@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+# я считаю что это очень хорошее и элегантное решение с использованием механизма генераторов
 def dive_in(l):
     if isinstance(l, list):
         for t in l:

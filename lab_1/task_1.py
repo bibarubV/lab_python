@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 def format_name(name: str) -> str:
+    # входные данные: строка или кортеж с ФИО
     if isinstance(name, str):
         last, first, middle = name.split(maxsplit=2)
         return f"{last} {first[0]}. {middle[0]}."

@@ -19,11 +19,12 @@ def main():
         if n in unique:
             unique.remove(n)
             repeating.add(n)
-        else:
+        elif n not in repeating:
             unique.add(n)
             if isinstance(n, float):
                 floats.add(n)
             else:
+                # четность применяем только при вводе числа как целого
                 if n % 2 == 0:
                     even.add(n)
                 else:

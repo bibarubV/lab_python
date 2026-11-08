@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 def change(val: int) -> dict[int, int]:
-    notes = (100, 50, 10, 5, 2, 1)
+    notes = (100, 50, 10, 5, 2, 1) # должно быть отсортировано в порядке убывания
     change = {}
     for note in notes:
         if val//note:

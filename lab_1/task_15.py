@@ -2,6 +2,7 @@
 
 from collections import defaultdict
 
+# в этом задании считаю разными позиции с одинаковым называнием но разной ценой
 sales = [
     {"name": "Nintendo Switch 2", "price": 500, "sold": 10},
     {"name": "Sony Playstation 5", "price": 650, "sold": 10},

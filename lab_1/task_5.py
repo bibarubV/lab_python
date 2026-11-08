@@ -5,20 +5,19 @@ def num(x):
     return float(x) if "." in x else int(x)
 
 def main():
-    a_ = input("Введите число a: ")
-    a = num(a_)
-    b_ = input("Введите число b: ")
-    b = num(b_)
-    print("a+b = "+str(a+b))
-    print("a-b = "+str(a-b))
-    print("a*b = "+str(a*b))
+    a = num(input("Введите число a: "))
+    b = num(input("Введите число b: "))
+    print("a + b = "+str(a+b))
+    print("a - b = "+str(a-b))
+    print("a * b = "+str(a*b))
     if b != 0:
+        # целочисленное деление, если оба числа были введены как целые, иначе дробное
         if isinstance(a, int) and isinstance(b, int):
             print("a // b = "+str(a//b))
             print("a % b = "+str(a%b))
         else:
             print("a / b = "+str(a/b))
-    print("a^b = "+str(a**b))
+    print("a ^ b = "+str(a**b))
 
 if __name__ == "__main__":
     main()

@@ -14,6 +14,7 @@ class Buyer:
 
     def is_birthday(self):
         today = date.today()
+        # если день рождения 29 февраля, а текущий год невисокосный, то принимаем 1 марта за др
         if (self.birth_date.month == 2 and self.birth_date.day == 29) and not self.is_leap_year(today.year):
             return today.month == 3 and today.day == 1
         return self.birth_date.day == today.day and self.birth_date.month == today.month
@@ -53,8 +54,9 @@ def main():
     birth_date_str = input("Введите дату рождения покупателя (DD.MM.YYYY): ")
     day, month, year = (int(x) for x in birth_date_str.split(".", 3))
     birth_date = date(year, month, day)
+
     yn = input("Покупатель VIP? (д/н): ").lower()
-    is_vip = yn == "y" or yn == "д"
+    is_vip = yn in "yд"
     total = int(input("Введите сумму покупки: "))
 
     print("Рассчитанная скидка: "+str(Discount(Buyer(birth_date, is_vip), total).get_discount())+"%")

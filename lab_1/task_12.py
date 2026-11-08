@@ -23,6 +23,7 @@ def analyze_text(text, skip=None):
     print("Самое длинное слово:", longest)
 
 def main():
+    # текст можно ввести в несколько строк, ввод заканчивается при пустой строке
     text = ""
     s = input("Введите текст:\n")
     while s:
