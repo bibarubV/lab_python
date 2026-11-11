@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 def change(val: int) -> dict[int, int]:
-    notes = (100, 50, 10, 5, 2, 1) # должно быть отсортировано в порядке убывания
+    notes = (100, 50, 20, 10, 5, 2, 1) # должно быть отсортировано в порядке убывания
+                                       # https://github.com/Shalvi404/Python_lab/pull/1#discussion_r4525487711
     change = {}
     for note in notes:
         if val//note:
