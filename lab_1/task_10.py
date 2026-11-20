@@ -2,52 +2,39 @@
 
 from datetime import date
 
-class Buyer:
-    def __init__(self, birth_date, is_vip):
-        self.birth_date = birth_date
-        self._is_vip = is_vip
+# я забыл про calendar.isleap()
+def is_leap_year(year):
+    return year % 400 == 0 or (year % 100 != 0 and year % 4 == 0)
 
-    # я забыл про calendar.isleap()
-    @staticmethod
-    def is_leap_year(year):
-        return year % 400 == 0 or (year % 100 != 0 and year % 4 == 0)
+def is_birthday(birth_date):
+    today = date.today()
+    # если день рождения 29 февраля, а текущий год невисокосный, то принимаем 1 марта за др
+    if (birth_date.month == 2 and birth_date.day == 29) and not is_leap_year(today.year):
+        return today.month == 3 and today.day == 1
+    return birth_date.day == today.day and birth_date.month == today.month
 
-    def is_birthday(self):
-        today = date.today()
-        # если день рождения 29 февраля, а текущий год невисокосный, то принимаем 1 марта за др
-        if (self.birth_date.month == 2 and self.birth_date.day == 29) and not self.is_leap_year(today.year):
-            return today.month == 3 and today.day == 1
-        return self.birth_date.day == today.day and self.birth_date.month == today.month
 
-    def get_age(self):
-        today = date.today()
-        diff = today.year-self.birth_date.year
-        if (today.month, today.day) < (self.birth_date.month, self.birth_date.day):
-            diff -= 1
-        return diff
+def get_age(birth_date):
+    today = date.today()
+    diff = today.year-birth_date.year
+    if (today.month, today.day) < (birth_date.month, birth_date.day):
+        diff -= 1
+    return diff
 
-    def is_vip(self):
-        return self._is_vip
+def get_discount(birth_date, is_vip, total):
+    discount = 0
+    if total > 1000:
+        discount += 10
+    if get_age(birth_date) >= 63:
+        discount += 5
+    if is_birthday(birth_date):
+        discount += 5
+    if is_vip:
+        discount = max(discount, 15)
 
-class Discount:
-    def __init__(self, buyer, total):
-        self.buyer = buyer
-        self.total = total
+    discount = min(discount, 25) # ???
 
-    def get_discount(self):
-        discount = 0
-        if self.total > 1000:
-            discount += 10
-        if self.buyer.get_age() >= 63:
-            discount += 5
-        if self.buyer.is_birthday():
-            discount += 5
-        if self.buyer.is_vip():
-            discount = max(discount, 15)
-
-        discount = min(discount, 25) # ???
-
-        return discount
+    return discount
 
 def main():
     # из task_6
@@ -59,7 +46,7 @@ def main():
     is_vip = yn in "yд"
     total = int(input("Введите сумму покупки: "))
 
-    print("Рассчитанная скидка: "+str(Discount(Buyer(birth_date, is_vip), total).get_discount())+"%")
+    print("Рассчитанная скидка: "+str(get_discount(birth_date, is_vip, total))+"%")
 
 if __name__ == "__main__":
     main()
